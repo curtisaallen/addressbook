@@ -1,0 +1,86 @@
+<div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="pull-left">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                    Contacts
+                </h2>
+                <a routerLink="/new" class="pull-right btn-out">Add New Contact</a> 
+            </div> 
+            <div class="col-lg-12 search-form">
+                <h2>Address Book</h2>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Filter Contacts By First Name"
+                    [(ngModel)]="searchValue"
+                    />
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div> 
+            <div class="col-lg-12 letter-control">
+               <ul>
+                  <li><a (click)="filterContact(undefined)">All</a></li>
+                  <li><a (click)="filterContact('A')">A</a></li>
+                  <li><a (click)="filterContact('B')">B</a></li>
+                  <li><a (click)="filterContact('C')">C</a></li>
+                  <li><a (click)="filterContact('D')">D</a></li>
+                  <li><a (click)="filterContact('E')">E</a></li>
+                  <li><a (click)="filterContact('F')">F</a></li>
+                  <li><a (click)="filterContact('G')">G</a></li>
+                  <li><a (click)="filterContact('H')">H</a></li>
+                  <li><a (click)="filterContact('I')">I</a></li>
+                  <li><a (click)="filterContact('J')">J</a></li>
+                  <li><a (click)="filterContact('K')">K</a></li>
+                  <li><a (click)="filterContact('L')">L</a></li>
+                  <li><a (click)="filterContact('M')">M</a></li>
+                  <li><a (click)="filterContact('N')">N</a></li>
+                  <li><a (click)="filterContact('O')">O</a></li>
+                  <li><a (click)="filterContact('P')">P</a></li>
+                  <li><a (click)="filterContact('Q')">Q</a></li>
+                  <li><a (click)="filterContact('R')">R</a></li>
+                  <li><a (click)="filterContact('S')">S</a></li>
+                  <li><a (click)="filterContact('T')">T</a></li>
+                  <li><a (click)="filterContact('U')">U</a></li>
+                  <li><a (click)="filterContact('V')">V</a></li>
+                  <li><a (click)="filterContact('W')">W</a></li>
+                  <li><a (click)="filterContact('X')">X</a></li>
+                  <li><a (click)="filterContact('Y')">Y</a></li>
+                  <li><a (click)="filterContact('Z')">Z</a></li>
+               </ul>   
+            </div>         
+            <div class="card-block">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!addressbooks">
+                        <td colspan="5">
+                           No address have loaded.                        
+                        </td>
+                    </tr>    
+                    <tr  *ngFor="let addressbook of addressbooks | searchFilter: searchValue | letterFilter: letter">
+                        <td>{{addressbook.first_name}}</td>
+                        <td>{{addressbook.last_name}}</td>
+                        <td>{{addressbook.phone | phonePipe}}</td>
+                        <td>{{addressbook.email}}</td>
+                        <td>
+                            <a routerLink="/details/{{addressbook.id}}" class="btn-orange">View</a>
+                            <a routerLink="/edit/{{addressbook.id}}" class="btn-gray">Edit</a>
+                            <a (click)="deleteContact(addressbook.id)" class="btn-gray">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

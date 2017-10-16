@@ -1,0 +1,46 @@
+    <div class="container">
+        <div class="card detail-view">
+            <div class="card-header">
+                <h2 class="pull-left">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                    Contacts Details
+                </h2>                  
+                <a routerLink="/home" class="pull-right btn-out">Back to Home</a>                 
+            </div> 
+            <div class="card-block">
+                <h2>View conatact details below:</h2>
+  
+              <table class="table table-bordered" *ngIf="contact">
+                <tbody>
+                    </tbody><thead>
+                      <tr>
+                          <th>Contact Info:</th>
+                          <th></th>
+                      </tr>    
+                    </thead>    
+                    <tbody>
+                    <tr>
+                        <td>First Name: {{contact?.first_name}}</td>
+                        <td>Last Name: {{contact?.last_name}}</td>
+                    </tr>
+                     <tr>
+                        <td>Phone: {{contact?.phone | phonePipe}}</td>
+                        <td>Email: {{contact?.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Company: {{contact?.company}}</td>
+                        <td>Title: {{contact?.title}}</td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <div class="row control-button">
+                    <div class="col-md-12">
+                        <a routerLink="/home" class="btn btn-secondary btn-orange">View All Contacts</a>
+                    </div>    
+                </div>
+
+
+            </div>
+        </div>
+    </div>

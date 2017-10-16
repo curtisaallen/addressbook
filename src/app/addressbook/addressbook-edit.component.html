@@ -1,0 +1,135 @@
+    <div class="container">
+        <div class="card edit-view">
+            <div class="card-header">
+                <h2 class="pull-left">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                    Edit Contacts
+                </h2>                
+                <a routerLink="/home" class="pull-right btn-out">Back to Home</a> 
+            </div> 
+           <div *ngIf="contact">
+            <form (ngSubmit)="editContact(contact.id, contact)" >
+            <div class="card-block">
+                <h2>Edit conatact details below:</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="firstname">First Name<sup>*</sup>:</label>
+                            <input type="text" 
+                            class="form-control" 
+                            id="firstname" 
+                            [value]="contact?.first_name"
+                            required
+                            name="first_name"
+                            #first_name='ngModel'
+                            [(ngModel)]="contact.first_name"
+                            tabindex="1"
+                            >
+                            <div [hidden]="first_name.valid || first_name.pristine">
+                                First Name is required
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company<sup>*</sup>:</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="company"
+                                   required
+                                   [value]="contact?.company"
+                                   name="company"
+                                   #company='ngModel'
+                                   [(ngModel)]="contact.company"
+                                   tabindex="3"
+                                   >
+
+                                <div [hidden]="company.valid || company.pristine">
+                                    Company is required
+                                </div>  
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email<sup>*</sup>:</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="email"
+                                   required
+                                   [value]="contact?.email"
+                                   name="email"
+                                   #email='ngModel'
+                                   [(ngModel)]="contact.email"
+                                   tabindex="5"
+                                   >
+                                <div [hidden]="email.valid || email.pristine">
+                                    Email is required
+                                </div> 
+                        </div>                                                 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastname">Last Name<sup>*</sup>:</label>
+                            <input type="text" 
+                            class="form-control" 
+                            id="lastname" 
+                            [value]="contact?.last_name"
+                            required
+                            name="last_name"
+                            #last_name='ngModel'
+                            [(ngModel)]="contact.last_name"
+                            tabindex="2"
+                            >
+                            <div [hidden]="last_name.valid || last_name.pristine">
+                                Last Name is required
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title<sup>*</sup>:</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="title"
+                                   required
+                                   [value]="contact?.title"
+                                   name="title"
+                                   #title='ngModel'
+                                   [(ngModel)]="contact.title"
+                                   tabindex="4"
+                                   >
+                                <div [hidden]="title.valid || title.pristine">
+                                    Title is required
+                                </div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone<sup>*</sup>:</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="phone"
+                                   [value]="contact?.phone"
+                                   required
+                                   name="phone"
+                                   #phone='ngModel'
+                                   [(ngModel)]="contact.phone"
+                                   tabindex="6"
+                                   >
+                                <div [hidden]="phone.valid || phone.pristine">
+                                    Phone is required
+                                </div>                            
+                        </div>                                                
+                    </div>
+                </div>
+                <div class="row" *ngIf="submitted">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" role="alert">
+                          <strong>Well done!</strong> You successfully edit your contact details.
+                          <a routerLink="/home">Back to home</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row control-button">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary btn-orange">Save</button>
+                        <a routerLink="/home" class="btn btn-secondary btn-gray">Cancel</a>
+                    </div>    
+                </div>
+            </div>
+            </form>
+           </div>
+        </div>
+    </div>
